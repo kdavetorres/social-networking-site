@@ -11,6 +11,7 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+
     /**
      * The attributes that are mass assignable.
      *
@@ -53,6 +54,11 @@ class User extends Authenticatable
     }
 
     //RELATIONAL / MATACHING TABLES COLUMNS
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+
     public function profile()
     {
         return $this->hasOne(Profile::class);
