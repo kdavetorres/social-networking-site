@@ -56,7 +56,7 @@ class User extends Authenticatable
     //RELATIONAL / MATACHING TABLES COLUMNS
     public function posts()
     {
-        return $this->hasMany(Post::class);
+        return $this->hasMany(Post::class)->orderBy('created_at', 'DESC');
     }
 
     public function profile()

@@ -32,13 +32,16 @@
             </div>
 
             <div class="d-flex">
-                <div class="pr-5"><strong>127K</strong> post</div>
+                <div class="pr-5"><strong>{{ Auth::user()->posts()->count() }}</strong> post</div>
                 <div class="pr-5"><strong>24K</strong> followers</div>
                 <div class="pr-5"><strong>300</strong> following</div>
             </div>
             <div class="pt-4 font-weight-bold">{{ $userprofile->profile->title }}</div>
             <div>{{ $userprofile->profile->description }}</div>
             <div><a href="#">{{ $userprofile->profile->url }}</a></div>
+            <!-- <div class="pt-4 font-weight-bold">{{ Auth::user()->title }}</div>
+            <div>{{ $userprofile->profile->description }}</div>
+            <div><a href="#">{{ $userprofile->profile->url }}</a></div> -->
         </div>
     </div>
     <div class="row">
