@@ -30,7 +30,7 @@
                 </div>
                 <a href="/p/create" class="btn btn-primary">Add new post</a>
             </div>
-
+            <a href="/profile/{{ $userprofile->id }}/edit">Edit Profile</a>
             <div class="d-flex">
                 <div class="pr-5"><strong>{{ Auth::user()->posts()->count() }}</strong> post</div>
                 <div class="pr-5"><strong>24K</strong> followers</div>
