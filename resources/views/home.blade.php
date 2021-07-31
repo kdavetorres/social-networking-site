@@ -46,7 +46,11 @@
     </div>
     <div class="row">
         @foreach($userprofile->posts as $post)
-        <div class="col-4"><img src="/storage/{{ $post->image }}" alt="post photos" class="w-100"></div>
+        <div class="col-4 pb-3">
+            <a href="/p/{{ $post->id }}">
+                <img src="/storage/{{ $post->image }}" alt="post photos" class="w-100">
+            </a>
+        </div>
         @endforeach
     </div>
 </div>

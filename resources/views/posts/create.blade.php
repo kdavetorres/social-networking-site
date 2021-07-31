@@ -5,7 +5,6 @@
 
     <form action="/p" method="post" enctype="multipart/form-data">
         @csrf
-        @method('POST')
         <div class="col-8 offset-2">
             <div class="row">
                 <h1>Add New Post</h1>
