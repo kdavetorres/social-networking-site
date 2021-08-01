@@ -21,31 +21,32 @@
     </div> -->
     <div class="row">
         <div class="col-3 p-5">
-            <img src="/img/photo.png" alt="photos" class="w-100 rounded-circle">
+            <img src="/storage/{{ $userid->profile->image }}" alt="photos" class="w-100 rounded-circle">
         </div>
         <div class="col-9 p-5">
             <div class="d-flex justify-content-between align-items-baseline">
                 <div class="d-flex align-items-center p-b4">
-                    <h1>{{ Auth::user()->username }}</h1>
+                    <h1>{{ $userid->username }}</h1>
                 </div>
+                @can('update', $userid->profile)
                 <a href="/p/create" class="btn btn-primary">Add new post</a>
+                @endcan
             </div>
-            <a href="/profile/{{ $userprofile->id }}/edit">Edit Profile</a>
+            @can('update', $userid->profile)
+            <a href="/profile/{{ $userid->id }}/edit">Edit Profile</a>
+            @endcan
             <div class="d-flex">
-                <div class="pr-5"><strong>{{ Auth::user()->posts()->count() }}</strong> post</div>
+                <div class="pr-5"><strong>{{ $userid->posts()->count() }}</strong> post</div>
                 <div class="pr-5"><strong>24K</strong> followers</div>
                 <div class="pr-5"><strong>300</strong> following</div>
             </div>
-            <div class="pt-4 font-weight-bold">{{ $userprofile->profile->title }}</div>
-            <div>{{ $userprofile->profile->description }}</div>
-            <div><a href="#">{{ $userprofile->profile->url }}</a></div>
-            <!-- <div class="pt-4 font-weight-bold">{{ Auth::user()->title }}</div>
-            <div>{{ $userprofile->profile->description }}</div>
-            <div><a href="#">{{ $userprofile->profile->url }}</a></div> -->
+            <div class="pt-4 font-weight-bold">{{ $userid->profile->title }}</div>
+            <div>{{ $userid->profile->description }}</div>
+            <div><a href="#">{{ $userid->profile->url }}</a></div>
         </div>
     </div>
     <div class="row">
-        @foreach($userprofile->posts as $post)
+        @foreach($userid->posts as $post)
         <div class="col-4 pb-3">
             <a href="/p/{{ $post->id }}">
                 <img src="/storage/{{ $post->image }}" alt="post photos" class="w-100">

@@ -25,6 +25,8 @@ Route::get('/p/{post}', [App\Http\Controllers\PostsController::class, 'show']);
 
 Auth::routes();
 
-Route::get('/profile/{userid}', [App\Http\Controllers\ProfilesController::class, 'index'])->name('home');
+Route::get('/profile/{userid}', [App\Http\Controllers\ProfilesController::class, 'index'])->name('profiles.index');
 
-Route::get('/profile/{userid}/edit', [App\Http\Controllers\ProfilesController::class, 'edit'])->name('profile.edit');
+Route::get('/profile/{userid}/edit', [App\Http\Controllers\ProfilesController::class, 'edit'])->name('profiles.edit');
+
+Route::patch('/profile/{userid}', [App\Http\Controllers\ProfilesController::class, 'update'])->name('profiles.update');

@@ -3,15 +3,16 @@
 @section('content')
 <div class="container">
 
-    <form action="/p" method="post" enctype="multipart/form-data">
+    <form action="/profile/{{ $userid->id }}" method="post" enctype="multipart/form-data">
         @csrf
+        @method('PATCH')
         <div class="col-8 offset-2">
             <div class="row">
                 <h1>Edit Profiles</h1>
             </div>
             <div class="form-group row">
                 <label for="title">Title</label>
-                <input type="text" id="title" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ $userid->profile->title }}" value="{{ old('title') }}" autocomplete="title" autofocus>
+                <input type="text" id="title" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') ?? $userid->profile->title }}" autocomplete="title" autofocus>
 
                 @error('title')
                 <span class="invalid-feedback" role="alert">
@@ -21,8 +22,7 @@
             </div>
             <div class="form-group row">
                 <label for="description">Description</label>
-                <textarea name="description" id="description" cols="30" rows="5" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') }}" autocomplete="description" autofocus></textarea>
-
+                <textarea name="description" id="description" cols="30" rows="5" class="form-control @error('description') is-invalid @enderror" name="description" autocomplete="description" autofocus>{{ old('description') ?? $userid->profile->description }}</textarea>
 
                 @error('description')
                 <span class="invalid-feedback" role="alert">
@@ -32,7 +32,7 @@
             </div>
             <div class="form-group row">
                 <label for="url">Website URL</label>
-                <input type="text" name="url" id="url" cols="30" rows="5" class="form-control @error('url') is-invalid @enderror" name="url" value="{{ old('url') }}" autocomplete="url" autofocus>
+                <input type="text" name="url" id="url" cols="30" rows="5" class="form-control @error('url') is-invalid @enderror" name="url" value="{{ old('url') ?? $userid->profile->url }}" autocomplete="url" autofocus>
 
                 @error('url')
                 <span class="invalid-feedback" role="alert">
