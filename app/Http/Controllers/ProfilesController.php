@@ -32,7 +32,7 @@ class ProfilesController extends Controller
         ]);
 
         if (request('image')) {
-            $image_path = request('image')->store('uploads', 'public');
+            $image_path = request('image')->store('profile', 'public');
             $image = Image::make(public_path("storage/{$image_path}"))->resize(1000, 1000);
             $image_array = ['image' => $image_path];
             $image->save();
