@@ -21,12 +21,13 @@
     </div> -->
     <div class="row">
         <div class="col-3 p-5">
-            <img src="/storage/{{ $userid->profile->image }}" alt="photos" class="w-100 rounded-circle">
+            <img src="{{ $userid->profile->profileImage() }}" alt="photos" class="w-100 rounded-circle">
         </div>
         <div class="col-9 p-5">
             <div class="d-flex justify-content-between align-items-baseline">
                 <div class="d-flex align-items-center p-b4">
                     <h1>{{ $userid->username }}</h1>
+                    <follow-button></follow-button>
                 </div>
                 @can('update', $userid->profile)
                 <a href="/p/create" class="btn btn-primary">Add new post</a>
