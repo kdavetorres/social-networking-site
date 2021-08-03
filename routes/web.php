@@ -13,9 +13,15 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Auth::routes();
+
+Route::post('/follow/{userid}', [App\Http\Controllers\FollowController::class, 'store']);
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/', [App\Http\Controllers\PostsController::class, 'index']);
 
 Route::post('/p', [App\Http\Controllers\PostsController::class, 'store']);
 
@@ -23,9 +29,6 @@ Route::get('/p/create', [App\Http\Controllers\PostsController::class, 'create'])
 
 Route::get('/p/{post}', [App\Http\Controllers\PostsController::class, 'show']);
 
-Auth::routes();
-
-Route::post('/follow/{userid}', [App\Http\Controllers\FollowController::class, 'store']);
 
 Route::get('/profile/{userid}', [App\Http\Controllers\ProfilesController::class, 'index'])->name('profiles.index');
 
