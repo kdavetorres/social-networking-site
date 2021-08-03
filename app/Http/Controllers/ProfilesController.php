@@ -13,7 +13,8 @@ class ProfilesController extends Controller
     {
         // $userprofile = User::findOrFail($userid);
         // return view('home', ['userprofile' => $userprofile]);
-        return view('profiles.index', compact('userid'));
+        $follows = (auth()->user()) ? auth()->user()->following->contains($userid->id) : false;
+        return view('profiles.index', compact('userid', 'follows'));
     }
 
     public function edit(User $userid)

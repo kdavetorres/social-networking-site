@@ -27,7 +27,7 @@
             <div class="d-flex justify-content-between align-items-baseline">
                 <div class="d-flex align-items-center p-b4">
                     <h1>{{ $userid->username }}</h1>
-                    <follow-button user-id="{{ $userid->id }}"></follow-button>
+                    <follow-button user-id="{{ $userid->id }}" follows="{{ $follows }}"></follow-button>
                 </div>
                 @can('update', $userid->profile)
                 <a href="/p/create" class="btn btn-primary">Add new post</a>
